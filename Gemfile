@@ -62,3 +62,5 @@ gem 'omniauth-facebook'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "pip", "~> 0.0.2"
+
+gem "pry", "~> 0.14.1"

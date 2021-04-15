@@ -1,2 +1,10 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<% @artist.albums(country: 'US').each do |album| %>
+  <%= album.name %>
+  <ul>
+    <% album.tracks.each do |track| %>
+      <li>
+        <%= track.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
