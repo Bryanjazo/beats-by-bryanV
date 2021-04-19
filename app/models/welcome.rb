@@ -1,7 +1,4 @@
-class Track < ApplicationRecord
-  has_many :tracks
-  has_many :playlists, through: :playlists_tracks
-
+class Welcome < ApplicationRecord
   def self.new_from_spotify_track(spotify_track)
     Track.new(
       spotify_id: spotify_track.id,
@@ -19,8 +16,4 @@ class Track < ApplicationRecord
     track.save
     track
   end
-
-  def self.search(query)
-        self.where("title LIKE ?", "%#{query}%")
-    end
 end

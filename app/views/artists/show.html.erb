@@ -1,10 +1,27 @@
-<% @artist.albums(country: 'US').each do |album| %>
-  <%= album.name %>
-  <ul>
-    <% album.tracks.each do |track| %>
-      <li>
-        <%= track.name %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+
+<h1 class="page-header text-white"><%= @artist.name %></h1>
+
+<div class="row">
+  <% @artist.albums(country: 'US').each do |album| %>
+
+    <div class="col-sm-4">
+      <h3 class="text-white"><%= album.name %></h3>
+      <img src="<%= image_path(album.images.first['url']) %>" height=300  >
+      <br><br>
+      <%= form_tag({controller: "playlists", action: "create", method: "post"}) do %>
+        <%= hidden_field_tag "album_id", album.id %>
+        <%= submit_tag("Add To Collection", id: "button", class: "btn-lg", name: "Submit") %>
+      <% end %>
+      <br>
+      <button id="toggleTrack" data-id="<%= album.id %>">Hide/Show Tracks</button>
+        <ul id="<%= album.id %>" style="display:none" class="text-white">
+          <% album.tracks.each do |track| %>
+
+            <li>
+              <%= track.name %>
+            </li>
+          <% end %>
+        </ul>
+    </div><!-- end col-sm-4 -->
+  <% end %>
+</div> <!--end row-->

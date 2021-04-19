@@ -36,7 +36,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                    <%= link_to "Playlist Collection", user_playlists_path(current_user), class: "nav-link" %>
+                    <%= link_to "My Playlist Collection", user_playlists_path(current_user), class: "nav-link" %>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -53,7 +53,7 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
                 <li>
-                  <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                  <%= link_to "Sign Out", destroy_path, method: :delete, class: "nav-link" %>
                 </li>
               </ul>
             </div>
@@ -77,10 +77,10 @@
                     <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
                   </li>
                   <li class="nav-item">
-                     <%= link_to 'Sign in with Spotify', auth_spotify_callback_path, class: "nav-link" %>
+                    <a class="nav-link" href="#">About</a>
                   </li>
                   <li class="nav-item">
-                    
+                    <a class="nav-link" href="#">Contact</a>
                   </li>
                 </ul>
               </div>

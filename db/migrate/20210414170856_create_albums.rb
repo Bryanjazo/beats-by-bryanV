@@ -6,6 +6,9 @@ class CreateAlbums < ActiveRecord::Migration[6.1]
       t.integer :number_of_tracks
       t.string :images
       t.belongs_to :artist
+      t.string :copyrights
+      t.string :external_urls
+      t.string :label
 
       t.timestamps
     end

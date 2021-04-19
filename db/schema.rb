@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_171947) do
+ActiveRecord::Schema.define(version: 2021_04_17_175421) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 2021_04_14_171947) do
     t.integer "number_of_tracks"
     t.string "images"
     t.integer "artist_id"
+    t.string "copyrights"
+    t.string "external_urls"
+    t.string "label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["artist_id"], name: "index_albums_on_artist_id"
@@ -25,13 +28,8 @@ ActiveRecord::Schema.define(version: 2021_04_14_171947) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.string "release_date"
-    t.integer "number_of_tracks"
-    t.string "images"
-    t.bigint "artist_id"
-    t.string "copyrights"
-    t.string "external_urls"
-    t.string "label"
+    t.string "genre"
+    t.integer "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,9 +44,17 @@ ActiveRecord::Schema.define(version: 2021_04_14_171947) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "playlist_tracks", force: :cascade do |t|
+    t.integer "track_id"
+    t.integer "playlist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.integer "user_id"
     t.integer "album_id"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["album_id"], name: "index_playlists_on_album_id"
@@ -72,6 +78,12 @@ ActiveRecord::Schema.define(version: 2021_04_14_171947) do
     t.integer "duration_ms"
     t.boolean "explicit"
     t.integer "track_number"
+    t.string "artist"
+    t.string "image"
+    t.float "duration"
+    t.integer "popularity"
+    t.string "preview"
+    t.string "spotify_id"
     t.integer "album_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -79,9 +91,7 @@ ActiveRecord::Schema.define(version: 2021_04_14_171947) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
     t.string "name"
-    t.integer "user_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
