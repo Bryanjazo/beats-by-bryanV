@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_17_175421) do
+ActiveRecord::Schema.define(version: 2021_04_21_171423) do
 
   create_table "albums", force: :cascade do |t|
     t.string "name"
@@ -36,10 +36,12 @@ ActiveRecord::Schema.define(version: 2021_04_17_175421) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
+    t.integer "album_id"
     t.integer "review_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_comments_on_album_id"
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_175421) do
     t.integer "user_id"
     t.integer "album_id"
     t.integer "rating"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["album_id"], name: "index_playlists_on_album_id"

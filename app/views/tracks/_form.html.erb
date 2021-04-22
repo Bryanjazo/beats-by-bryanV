@@ -1,0 +1,24 @@
+    <% @albums.each do |album| %>
+      <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" src="<%= album.image %>" alt="Album Cover">
+            <div class="card-body">
+              <p class="card-text"><strong><%= album.name %></strong></p>
+              <p class="card-text">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a class="btn btn-sm btn-outline-secondary" href="">
+                      Go to Album
+                  </a>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  </div>
+</div>
+</div>
+</div>

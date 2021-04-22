@@ -20,7 +20,4 @@ class Track < ApplicationRecord
     track
   end
 
-  def self.search(query)
-        self.where("title LIKE ?", "%#{query}%")
-    end
 end

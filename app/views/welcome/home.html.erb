@@ -1,5 +1,6 @@
-<% if current_user %>
 
+<% if current_user %>
+<%= render 'tracks/form' %>
 
   <% else %>
     <div class="row">
@@ -7,24 +8,16 @@
         <h2>
           Create a Collection</h2>
         <p>
-          Search our database to find the vinyl to add to your collection! Once added, you can review the vinyl by either writing a review or providing a rating. You can also recommend vinyls for other users to check out. In your vinyl collection, you can sort
-          your vinyl's by oldest, newest, highest rated, and lowest rated.
+          Sign in to get started  or you can freely search for your favorite artistbelow.
         </p>
         <p>
           <a class="btn btn-secondary" href="<%= top_100_tracks_path %>" role="button">See Top 100 Songs! &raquo;</a>
-          <a class="btn btn-secondary" href="#" role="button">Search Database &raquo;</a>
+          <a class="btn btn-secondary" href="/search" role="button">Search Database &raquo;</a>
         </p>
       </div>
-      <div class="col-md-6">
-        <h2>Create Reviews</h2>
-        <p>
-          See what other user's have to say about a vinyl. The latest reviewed vinyl's are available for view. Similarly, you can view all the albums that have at least one review by a user. You can also search the list of available reviewed vinyl's by
-          searching the artist's name.
-        </p>
-        <p>
-          <a class="btn btn-secondary" href="#" role="button">View Reviews &raquo;</a>
         </p>
       </div>
     </div>
+    <%= render 'tracks/form' %>
   <% end %>
 </div>

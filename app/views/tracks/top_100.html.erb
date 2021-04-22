@@ -1,16 +1,19 @@
 <h1>
   Top 100 !
 </h1>
-<% if current_user %>
-  <ul>
-    <% @tracks.each do |track| %>
-      <li><%= link_to track.name, top_100_tracks_path(track)  %></li>
-      <% end %>
-    </ul>
-    <% else %>
-    <ul>
-      <% @tracks.each do |track| %>
-        <li><%= track.name %></li>
-        <% end %>
-      </ul>
-    <% end %>
+<% @tracks.each do |album| %>
+  <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <img class="card-img-top" src="<%= album.image %>" alt="Album Cover">
+        <div class="card-body">
+          <p class="card-text"><strong><%= album.name %></strong></p>
+          <p class="card-text">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

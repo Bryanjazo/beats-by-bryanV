@@ -10,25 +10,32 @@ class PlaylistsController < ApplicationController
           @spotify_album.tracks.each do |track|
               @album.tracks.build(name: track.name, duration_ms: track.duration_ms, explicit: track.explicit, track_number: track.track_number).save
           end
-      end
+        end
 
-      current_user.playlists.build(album: @album).save
+     current_user.playlists.build(album: @album, rating: 0, name: "Playlist Name").save
+     redirect_to user_playlists_path(current_user)
 
-      redirect_to playlists_path(current_user)
   end
+
 
   def index
-    @playlists = Playlist.all
+     if params[:user_id]
+        @playlists = User.find(params[:user_id]).playlists
+           else
+        @playlists = Playlist.all
+    end
   end
+
+  def show
+    @playlist = Playlist.find(params[:id])
+  end
+
 
   def destroy
-    @playlist = Playlist.find(params[:id])
-    @platlist.destroy
-
-    redirect_to user_playlist_path(current_user.id)
-
-
+   @playlist = Playlist.find(params[:id])
+    @playlist.destroy
+    redirect_to user_playlists_path(current_user.id)
   end
 
 
-  end
+end

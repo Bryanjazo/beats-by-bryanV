@@ -1,0 +1,9 @@
+<%= form_with model: @comment ,url: album_comments_path([@album, current_user]), method: "post" do |f| %>
+<div class="text-area">
+     New Comment: <%= f.text_area :content, size:"50x2" %><br><br>
+ </div>
+ <div class="actions">
+      <%= f.submit "Submit Comment", :class => "btn-sm btn-outline-secondary" %>
+  </div>
+
+<% end %>

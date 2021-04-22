@@ -3,8 +3,7 @@ class Album < ApplicationRecord
 
   has_many :playlists
   has_many :users, through: :playlists
-
   has_many :tracks
 
-  has_many :reviews
+  has_many :comments
 end

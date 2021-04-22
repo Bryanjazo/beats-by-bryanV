@@ -1,4 +1,4 @@
 module TrackHelper
 
-  
+
 end

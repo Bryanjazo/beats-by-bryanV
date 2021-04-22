@@ -1,6 +1,7 @@
 class Welcome < ApplicationRecord
   def self.new_from_spotify_track(spotify_track)
     Track.new(
+      id: = spotify_track.id
       spotify_id: spotify_track.id,
       name: spotify_track.name,
       artist: spotify_track.artists[0].name,
