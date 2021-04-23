@@ -1,28 +1,70 @@
+<body>
 
-<h2>Log in</h2>
+  <div id="dropDownSelect1"></div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "username" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+			<form class="login100-form validate-form">
+				<span class="login100-form-title p-b-37">
+					Sign In
+				</span>
+
+        <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+          <%= f.label :email  %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "username", class: "input100", placeholder: "email"%>
+          <span class="focus-input100"></span>
+        </div>
+
+
+        <div class="field">
+        </div>
+				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "input100", placeholder: "password" %>
+					<span class="focus-input100"></span>
+				</div>
+
+
+
+				<div class="container-login100-form-btn">
+            <%= f.submit "Sign In", class: "login100-form-btn" %>
+				</div>
+
+				<div class="text-center p-t-57 p-b-20">
+					<span class="txt1">
+						Or login with
+					</span>
+				</div>
+
+
+				<div class="text-center">
+					<%= link_to "Sing Up", new_user_registration_path, class: "txt2 hov1" %>
+				</div>
+
+        <% end %>
+
+
+        <div class="text-center">
+          <%= button_to 'Sign in with Github', '/auth/github', method: "post", class: "txt2 hov1" %>
+        </div>
+		</div>
+	</div>
+
+
+
+  <%= render "devise/shared/links" %>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! 
 
   def create
       @spotify_album = RSpotify::Album.find(params[:album_id])

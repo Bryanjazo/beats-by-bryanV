@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     root 'welcome#home'
     get '/about', to: 'welcome#about'
     get '/contact', to: 'welcome#contact'
-    get '/auth/spotify/callback', to: 'users#spotify'
+    get '/auth/github/callback', to: 'sessions#github'
     delete '/users/:user_id/playlists/:id', to: 'playlists#destroy'
     # delete '/albums/:album_id/comments/:id(', to: 'comments#destroy', as: 'destory_full'
 

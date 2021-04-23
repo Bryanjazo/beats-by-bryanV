@@ -1,34 +1,84 @@
 
-<h2>Sign up</h2>
+<body>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <div id="dropDownSelect1"></div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-<%= render "devise/shared/links" %>
+
+	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+			<form class="login100-form validate-form">
+				<span class="login100-form-title p-b-37">
+					Sign In
+				</span>
+
+        <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, class: "input100", placeholder: "name"%>
+        <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+          <%= f.label :email  %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "username", class: "input100", placeholder: "email"%>
+          <span class="focus-input100"></span>
+        </div>
+
+
+        <div class="field">
+        </div>
+				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+           <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "input100", placeholder: "password" %>
+					<span class="focus-input100"></span>
+				</div>
+
+        <div class="wrap-input100 validate-input m-b-25" data-validate = "Re-enter password">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "input100", placeholder: "password"  %>
+        <span class="focus-input100"></span>
+      </div>
+
+
+
+				<div class="container-login100-form-btn">
+            <%= f.submit "Sign Up", class: "login100-form-btn" %>
+				</div>
+
+				<div class="text-center p-t-57 p-b-20">
+					<span class="txt1">
+						Or login with
+					</span>
+				</div>
+
+
+				<div class="text-center">
+					<%= link_to "Sing Up", new_user_session_path, class: "txt2 hov1" %>
+				</div>
+
+        <div class="text-center">
+					 <%= button_to 'Sign up with Spotify', '/auth/spotify', method: "post", class: "txt2 hov1" %>
+				</div>
+
+
+
+		</div>
+	</div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+	<div id="dropDownSelect1"></div>
+
+
+
+</body>
+</html>

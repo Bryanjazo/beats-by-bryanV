@@ -29,7 +29,12 @@ ActiveRecord::Schema.define(version: 2021_04_21_171423) do
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "genre"
-    t.integer "image"
+    t.string "release_date"
+    t.integer "number_of_tracks"
+    t.string "images"
+    t.string "copyrights"
+    t.string "external_urls"
+    t.string "label"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

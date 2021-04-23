@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -54,13 +55,14 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
+gem 'devise', github: 'heartcombo/devise'
 
 gem 'jquery-rails'
 gem 'bootstrap-sass', "~> 3.4.1"
 gem 'sassc-rails', ">= 2.1.0"
 gem 'popper_js', "~> 1.12.9"
-gem 'devise'
 gem 'omniauth-facebook'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -69,3 +71,13 @@ gem "pip", "~> 0.0.2"
 gem "pry", "~> 0.14.1"
 
 gem "rack-flash3", "~> 1.0"
+# gem 'omniauth-google-oauth2'
+# gem "omniauth-rails_csrf_protection"
+#
+# gem "pip", "~> 0.0.2"
+#
+# gem "pry", "~> 0.14.1"
+#
+# gem "rack-flash3", "~> 1.0"
+#
+# gem "dotenv-rails", "~> 2.7"
