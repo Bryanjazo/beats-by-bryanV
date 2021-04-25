@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  
+
 
 
   def create
@@ -33,7 +33,13 @@ class AlbumsController < ApplicationController
     end
 
     def show
-        @album = Album.find(params[:id])
+
+      if @album_id = params[:album_id]
+        @album = RSpotify::Album.search(params[:album_id]).first
+      else
+         @album = Album.find(params[:id])
+       end
+
     end
 
     private

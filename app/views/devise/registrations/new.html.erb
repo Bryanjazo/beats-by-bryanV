@@ -14,7 +14,7 @@
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
 			<form class="login100-form validate-form">
 				<span class="login100-form-title p-b-37">
-					Sign In
+					Sign Up
 				</span>
 
         <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
@@ -63,18 +63,18 @@
 				<div class="text-center">
 					<%= link_to "Sing Up", new_user_session_path, class: "txt2 hov1" %>
 				</div>
-
+          <% end %>
         <div class="text-center">
-					 <%= button_to 'Sign up with Spotify', '/auth/spotify', method: "post", class: "txt2 hov1" %>
+            <%= render "devise/shared/links", class: "txt2 hov1" %>
+
 				</div>
 
 
 
 		</div>
 	</div>
-  <% end %>
 
-  <%= render "devise/shared/links" %>
+
 
 	<div id="dropDownSelect1"></div>
 

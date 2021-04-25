@@ -1,0 +1,29 @@
+<h1><%= @album.artist.name %></h1>
+<img src="<%= @album.images %>" height=500>
+<h2><%= @album.name %></h2>
+<h4><%= @album.label %></h4>
+<h4><%= @album.copyrights %></h4>
+<ul class="list-group list-group-flush">
+    <% @album.tracks.each do |track| %>
+        <li class="list-group-item"><%= track.name %> </li>
+    <% end %>
+</ul>
+
+<%= link_to "Listen to the Album on Spotify", @album.external_urls %><br><br>
+
+<%= render 'comments/comment' %>
+
+
+<div class="card-group">
+      <% @album.comments.each do |comment| %>
+          <div class="card border-dark mb-3" style="width: 18rem;">
+              <div class="card-body">
+                  <p class="card-text" id="content <%=comment.id%>"><%= comment.content.truncate(27) %></p>
+                  <%= form_with url: comment_path(comment), method: :delete do |f| %>
+                  <%= f.hidden_field :album_id, value: @album.id %>
+                  <%= f.submit "Delete Comment", class: "btn btn-sm btn-outline-secondary"%>
+                  <% end %>
+              </div>
+          </div>
+      <% end %>
+  </div><!-- end row -->

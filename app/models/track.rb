@@ -14,10 +14,18 @@ class Track < ApplicationRecord
     )
   end
 
+
   def self.create_from_spotify_track(spotify_track)
-    track = self.new_from_spotify_track(spotify_track)
-    track.save
-    track
+    track = Track.find_by(
+      spotify_id: spotify_track.id,
+    )
+    if track
+      track
+    else
+      track = self.new_from_spotify_track(spotify_track)
+      track.save
   end
+  track
+end
 
 end

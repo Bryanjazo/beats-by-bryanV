@@ -62,6 +62,9 @@ gem 'bootstrap-sass', "~> 3.4.1"
 gem 'sassc-rails', ">= 2.1.0"
 gem 'popper_js', "~> 1.12.9"
 gem 'omniauth-facebook'
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+gem 'activerecord-session_store'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
