@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
     root 'welcome#index'
-    get '/about', to: 'welcome#about'
-    get '/contact', to: 'welcome#contact'
-    get '/auth/github/callback', to: 'sessions#github'
-    get '/signout', to: 'omniauth_callbacks#destroy', as: 'delete_session'
-    delete '/users/:user_id/playlists/:id', to: 'playlists#destroy'
     get '/artists', to: 'artists#index'
     get '/artists/:id', to: 'artists#show', as: 'artist'
     get '/search', to: 'artists#search'

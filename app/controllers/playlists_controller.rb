@@ -25,10 +25,17 @@ class PlaylistsController < ApplicationController
   end
 
   def index
-    if params[:user_id]
-          @playlists = User.find(params[:user_id]).playlists
+    if params[:user_id] = current_user.id
+          user_playlists = User.find(params[:user_id]).playlists
+          if params[:filter] == "Newest Additions"
+                @playlists = user_playlists.newest
+              elsif params[:filter] == "Oldest Additions"
+                @playlists = user_playlists.oldest
+            else
+            @playlists = User.find(params[:user_id]).playlists
+          end
         else
-          Playlist.all
+          redirect_to user_playlists_path(current_user.id)
        end
   end
 
@@ -38,7 +45,7 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist = Playlist.find(params[:id])
-    @playlist.destroy
+    @playlist.destroy if current_user.playlists.include?(@playlist)
     redirect_to user_playlists_path(current_user.id)
   end
 

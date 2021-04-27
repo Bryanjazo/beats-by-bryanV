@@ -14,13 +14,15 @@
 <% end %>
 
 <div class="card-group">
-      <% @album.comments.each do |comment| %>
+      <% @album.comments.each do |comment|%>
           <div class="card border-dark mb-3" style="width: 18rem;">
               <div class="card-body">
-                  <p class="card-text" id="content <%=comment.id%>"><%= comment.content.truncate(27) %></p>
+                <p class="card-text" id="content <%=comment.id%>"><%= comment.content.truncate(27) %> </p>
+                  <% if comment.user_id == current_user.id %>
                   <%= form_with url: comment_path(comment), method: :delete do |f| %>
                   <%= f.hidden_field :album_id, value: @album.id %>
                   <%= f.submit "Delete Comment", class: "btn btn-sm btn-outline-secondary"%>
+                  <% end %>
                   <% end %>
               </div>
           </div>

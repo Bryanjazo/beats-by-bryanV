@@ -21,6 +21,9 @@ class Playlist < ApplicationRecord
 #
 # SELECT (?,?) from GROUP BY
 
+scope :oldest, -> { order(created_at: :asc)}
+scope :newest, -> { order(created_at: :desc)}
+
 
 
 

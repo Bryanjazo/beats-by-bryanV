@@ -1,5 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :authenticate_user!, except: [:search, :index, :show]
+
   def search
   end
 

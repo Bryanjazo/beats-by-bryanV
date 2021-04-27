@@ -2,6 +2,21 @@ class AlbumsController < ApplicationController
 
   before_action :authenticate_user!, except: [:show]
 
+  def index
+
+        if params[:artist]
+            @album = Album.all.collect do |album|
+                if album.artist.name.downcase.include?(params[:artist].downcase)
+                    album
+                end
+            end.compact
+        else
+            @album = Album.all
+        end
+        if @album.empty?
+         flash.now[:alert] = "Sorry, there are no matches for that artist."
+     end
+ end
 
   def new
     @album = Album.new

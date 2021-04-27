@@ -3,6 +3,10 @@
       <%= flash[:error] %>
     </div>
 <% end %>
+<%= form_tag "", method: "get" do %>
+       <%= select_tag "filter", "<option>Newest Additions</option><option>Oldest Additions</option>".html_safe %>
+       <%= submit_tag "Filter" %>
+     <% end %>
 <div class="album py-5 bg-light">
   <div class="container-fluid">
     <div>
@@ -17,6 +21,9 @@
                 <p class="card-text">
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
+                    <a class="btn btn-sm btn-outline-secondary" href="<%= new_album_comment_path(playlist.album) %>">
+                        Add Comment
+                      </a>
                     <a class="btn btn-sm btn-outline-secondary" href="<%= album_path(playlist.album) %>">
                         Go to Album
                     </a>

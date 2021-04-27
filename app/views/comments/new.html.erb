@@ -1,0 +1,20 @@
+<div>
+    <h1>Leave a comment</h1>
+
+    <h3><%= @album.name %></h3>
+    <img src="<%= image_path(@album.images) %>" height=300 ><br><br>
+
+    <div id="postedReview">
+
+    </div>
+
+    <%= form_with model: @comment ,url: album_comments_path([@album, current_user]), method: "post" do |f|  %>
+    <%= f.hidden_field :album_id, value: @album.id %>
+    <div class="text-area">
+         New Comment: <%= f.text_area :content, size:"50x2", class:"comments" %><br><br>
+     </div>
+     <div class="actions">
+          <%= f.submit "Submit Comment", :class => "btn-sm btn-outline-secondary" %>
+      </div>
+    <% end %>
+</div>
