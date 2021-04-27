@@ -2,12 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :email, uniqueness: true
+  validates :email, :password, presence: true
 
   # devise :omniauthable, :omniauth_providers => [:github]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook, :github]
+         :omniauthable, omniauth_providers: [:facebook]
 
   has_many :playlists
   has_many :albums, through: :playlists

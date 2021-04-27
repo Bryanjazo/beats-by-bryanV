@@ -1,15 +1,14 @@
-
+<body class="welcome-body">
 <% if current_user %>
 <%= render 'tracks/form' %>
-
   <% else %>
     <div class="row">
       <div class="col-md-6">
         <h2>
           Create a Collection</h2>
-        <p>
+        <h2>
           Sign in to get started  or you can freely search for your favorite artistbelow.
-        </p>
+        </h2>
         <p>
           <a class="btn btn-secondary" href="<%= top_100_tracks_path %>" role="button">See Top 100 Songs! &raquo;</a>
           <a class="btn btn-secondary" href="/search" role="button">Search Database &raquo;</a>
@@ -17,7 +16,30 @@
       </div>
         </p>
       </div>
+      <% @albums.each do |album| %>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" src="<%= album.image.first %>" alt="Album Cover">
+              <div class="card-body">
+                <p class="card-text"><strong><%= album.name.first %> - <%= album.artist.first %></strong></p>
+                <p class="card-text">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= form_with url: album_path(album), method: 'get' do |f| %>
+                    <%= f.hidden_field :album_id, value: album.id %>
+                    <%= f.submit "Go to Album", class: "btn btn-sm btn-outline-secondary"%>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
     </div>
-    <%= render 'tracks/form' %>
+    </div>
+  </div>
+  </div>
+  </div>
+
   <% end %>
-</div>
+  </body>

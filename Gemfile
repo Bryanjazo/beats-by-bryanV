@@ -83,4 +83,4 @@ gem "rack-flash3", "~> 1.0"
 #
 # gem "rack-flash3", "~> 1.0"
 #
-# gem "dotenv-rails", "~> 2.7"
+gem "dotenv-rails", "~> 2.7"

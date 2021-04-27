@@ -1,18 +1,29 @@
+
 <% if @album_id %>
 
 <ul>
   <% @album.artists.each do |artist|%>
-  <li><%= artist.name%></li>
+  <li style="text-align: center;"><%= artist.name%></li>
   <% end %>
 </ul>
-<img src="<%= @album.images.first['url'] %>" height=500>
-<h2><%= @album.name %></h2>
-<h4><%= @album.label %></h4>
-<h4><%= @album.copyrights %></h4>
+<img src="<%= @album.images.first['url'] %>" height=500 style="padding-left: 38%;" >
+<h2 style="text-align: center;><%= @album.name %></h2>
+<h4 style="text-align: center;><%= @album.label %></h4>
 <ul class="list-group list-group-flush">
     <% @album.tracks.each do |track| %>
-        <li class="list-group-item"><%= track.name %> </li>
+        <li style="text-align: center; class="list-group-item"><%= track.name %> </li>
     <% end %>
+    <% if current_user %>
+    <% if flash[:error] != nil %>
+        <div class="container-c alert alert-danger" role="alert">
+          <%= flash[:error] %>
+        </div>
+    <% end %>
+    <%= form_tag({controller: "playlists", action: "create", method: "post"}) do %>
+    <%= hidden_field_tag "album_id", @album.id %>
+    <%= submit_tag("Add To Collection", id: "button", class: "btn-lg", name: "Submit") %>
+  <% end %>
+  <% end %>
 </ul>
 
 <% else %>

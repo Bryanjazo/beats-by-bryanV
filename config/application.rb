@@ -7,7 +7,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 
-RSpotify::authenticate('3eaa5dc2ccbb4385b0fea02620786bdc', 'aa2bff48c48f4e13b541b100a867516f')
+RSpotify::authenticate(ENV['SPOTIFY_KEY'], ENV['SPOTIFY_SECRET'])
 
 module BeatsByBryanv2
   class Application < Rails::Application

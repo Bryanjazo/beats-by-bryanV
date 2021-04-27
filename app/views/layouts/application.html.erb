@@ -44,59 +44,54 @@
   <body>
     <% if current_user %>
       <!-- NAVIGATION -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <div class="container">
-            <a class="navbar-brand" href="/">Record Your Records</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <%= link_to "Homepage", root_path, class: "nav-link" %>
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                    <%= link_to "My Playlist Collection", user_playlists_path(current_user), class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/search">Search</a>
-                </li>
-                  <li class="nav-item">
-                    <%= form_with url: destroy_user_session_path, method: :delete do |f| %>
-                    <%= f.submit "Sign Out", class: "nav-link"%>
-                    <% end %>
-                  </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a style="color: #F3CAC3;" class="navbar-brand" href="/">Beats By Bryan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div style="text-align: right;" class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "Homepage", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "My Playlist Collection", user_playlists_path(current_user), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/search">Search</a>
+            </li>
+            <li class="nav-item">
+              <%= form_with url: destroy_user_session_path,class: "form_sign-out", method: :delete do |f| %>
+              <%= f.submit "Sign Out", class: "nav-link"%>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- flag -->
       <% else %>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-            <div class="container">
-              <a class="navbar-brand" href="/">Record Your Records</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <%= link_to "Homepage", root_path, class: "nav-link" %>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-                      <span class="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a style="color: #F3CAC3;" class="navbar-brand" href="/">Beats-By-Bryan</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <%= link_to "Homepage", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+                <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <% end %>
+      <!-- flag -->
 
     <div class="">
       <%= yield %>

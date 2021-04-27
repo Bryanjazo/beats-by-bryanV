@@ -1,9 +1,28 @@
-<%= form_with model: @comment ,url: album_comments_path([@album, current_user]), method: "post" do |f| %>
+<% if flash[:error] != nil %>
+    <div class="container-c alert alert-danger" role="alert">
+      <%= flash[:error] %>
+    </div>
+<% end %>
+
+<%= form_with model: @comment ,url: album_comments_path([@album, current_user]), method: "post" do |f|  %>
 <div class="text-area">
-     New Comment: <%= f.text_area :content, size:"50x2" %><br><br>
+     New Comment: <%= f.text_area :content, size:"50x2", class:"comments" %><br><br>
  </div>
  <div class="actions">
       <%= f.submit "Submit Comment", :class => "btn-sm btn-outline-secondary" %>
   </div>
-
 <% end %>
+
+<div class="card-group">
+      <% @album.comments.each do |comment| %>
+          <div class="card border-dark mb-3" style="width: 18rem;">
+              <div class="card-body">
+                  <p class="card-text" id="content <%=comment.id%>"><%= comment.content.truncate(27) %></p>
+                  <%= form_with url: comment_path(comment), method: :delete do |f| %>
+                  <%= f.hidden_field :album_id, value: @album.id %>
+                  <%= f.submit "Delete Comment", class: "btn btn-sm btn-outline-secondary"%>
+                  <% end %>
+              </div>
+          </div>
+      <% end %>
+  </div><!-- end row -->

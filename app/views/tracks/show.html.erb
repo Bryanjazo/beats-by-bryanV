@@ -1,0 +1,15 @@
+<% if current_user %>
+<h1 style="text-align: center;"><%= @track.artist.name %></h1>
+<img src="<%= @track.images %>" height=500 style="padding-left: 36%;">
+<h2 style="text-align: center;"><%= @track.name %></h2>
+<h4 style="text-align: center;"><%= @track.copyrights %></h4>
+<ul class="list-group list-group-flush">
+    <% @track.tracks.each do |track| %>
+        <li style="text-align: center;" class="list-group-item"><%= track.name %> </li>
+    <% end %>
+</ul>
+
+<%= link_to "Listen to the Album on Spotify", @track.external_urls %><br><br>
+
+<%= render 'comments/comment' %>
+<% end %>

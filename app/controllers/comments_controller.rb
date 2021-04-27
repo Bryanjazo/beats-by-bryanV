@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+  before_action :authenticate_user!
 
   def create
     @comment = Comment.new(comment_params)
@@ -7,23 +7,19 @@ class CommentsController < ApplicationController
     if @comment.save
        redirect_to album_path(params[:album_id])
      else
-       @comment.errors.full_messages
+        flash[:error] = "Comment's Can't Be Blank"
+        redirect_to album_path(params[:album_id])
      end
+  end
+
+  def new
+    @comment = Comment.new
   end
 
   def index
     @comments = Comment.all
   end
 
-  def update
-    @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
-    if @comment.save
-      render  user_playlists_path(current_user)
-    elsif @comment.empty?
-      flash.now[:alert] = "Please input your comment in."
-    end
-end
 
   def destroy
     @comment = Comment.find(params[:id])
@@ -35,6 +31,6 @@ end
   private
 
   def comment_params
-    params.permit(:content, :album_id, :user_id)
+    params.permit(:content, :album_id, :user_id, :error)
   end
 end

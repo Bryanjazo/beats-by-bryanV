@@ -1,45 +1,19 @@
 class AlbumsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:show]
 
-
-  def create
-    @album = Album.new(album_params)
-    @album.id = current_user.id
-    if @album.save
-      redirect_to user_playlists_path(current_user)
-    elsif @comment.empty?
-      flash.now[:alert] = "Please input your comment in."
-    end
-  end
 
   def new
     @album = Album.new
   end
 
-  def index
-        if params[:artist]
-            @album = Album.all.collect do |album|
-                if album.artist.name.downcase.include?(params[:artist].downcase)
-                    album
-                end
-            end.compact
-        else
-            @album = Album.all
-        end
-
-        if @album.empty?
-            flash.now[:alert] = "Sorry, there are no matches for that artist."
-        end
-    end
 
     def show
-
       if @album_id = params[:album_id]
         @album = RSpotify::Album.search(params[:album_id]).first
       else
          @album = Album.find(params[:id])
        end
-
     end
 
     private
